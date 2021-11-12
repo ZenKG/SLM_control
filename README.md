@@ -1,3 +1,5 @@
+This codes have some bugs, I will fix them soon!
+
 # SLM_control
 Control SLMs with DVI connection, generate multispots to photostimulate.
 
