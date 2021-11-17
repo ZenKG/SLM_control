@@ -2,7 +2,7 @@ Work best with image size 512×512. If you use other image size, please contact 
 zen@rabbit.kobe-u.ac.jp
 
 # SLM_control
-Control SLMs with DVI connection, generate multispots to photostimulate.
+Control a SLM with DVI connection, generate multispots to photostimulate.
 
 RUN [calibration_GUI.m]
 First, check the parameters below, and save data.
