@@ -578,7 +578,7 @@ i = sqrt(-1);
 dum = zeros(sizey,sizex);
 
 % create SLM patterns
-Nsample = 20;
+Nsample = 3;
 
 for k = 1:Nsample
     
@@ -598,7 +598,9 @@ f1 =10000;
 f2=-8000;
 
 for h = 1:level
-    sphe{h} = exp(pi*i*(Fx.^2*dx^2+Fy.^2*dy^2)*(h-11)*interval/(lambda*f^2)).*exp(pi*i*((Fx.^2*dx^2)/(lambda*f1)+(Fy.^2*dy^2)/(lambda*f2)));
+    % sphe{h} = exp(pi*i*(Fx.^2*dx^2+Fy.^2*dy^2)*(h-11)*interval/(lambda*f^2)).*exp(pi*i*((Fx.^2*dx^2)/(lambda*f1)+(Fy.^2*dy^2)/(lambda*f2)));
+    sphe{h} = exp(pi*i*(Fx.^2*dx^2+Fy.^2*dy^2)*(h-11)*interval/(lambda*f^2));
+
     phase = (angle(data.*sphe{h})+pi)./(2*pi);
     Hdata = func_quantSLM10bit(phase,Gmax,sizex,sizey);
     zScandata{h} = Hdata;
@@ -724,10 +726,10 @@ for x = imageX/2-10*step-round(step/2):step:imageX/2+10*step-round(step/2)
 
         
         if  y+step>imageY && x+step<imageX 
-            weightMap(j,i) = max(max(scan(y:2048,x:imageX)));
+            weightMap(j,i) = max(max(scan(y:imageY,x:x+step)));
         end
         if  x+step>imageX && y+step<imageY 
-            weightMap(j,i) = max(max(scan(y:step,x:imageX)));
+            weightMap(j,i) = max(max(scan(y:y+step,x:imageX)));
         end
         
         if  x+step>imageX && y+step>imageY 

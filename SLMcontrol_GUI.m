@@ -153,11 +153,11 @@ dum = zeros(sizey,sizex);
 col = rand(1,3);
 
 % mouse click to the target position
-% [clickx,clicky] = ginputc('Color','r','ShowPoints',true,'ConnectPoints',false);
-% click = [clickx clicky];
+[clickx,clicky] = ginputc('Color','r','ShowPoints',true,'ConnectPoints',false);
+click = [clickx clicky];
 % not mouse click
-click = [244.8848  428.8702;239.3094  614.7142;239.3094  843.3022;514.3584  843.3022;...
-    746.6633  847.0191; 741.0880  657.4583; 741.0880  466.0390; 510.6416  473.4728;512.5000  659.3167];
+% click = [244.8848  428.8702;239.3094  614.7142;239.3094  843.3022;514.3584  843.3022;...
+%     746.6633  847.0191; 741.0880  657.4583; 741.0880  466.0390; 510.6416  473.4728;512.5000  659.3167];
 
 [m,~] = size(click);
      
@@ -193,7 +193,7 @@ for k = 1:m
     shiftx = shift(1,1);
     shifty = shift(2,1);
      
-    data =sqrt(weight(y(k),x(k))).* exp(-i*2.0*pi*(shiftx*Fx/sizex+shifty*Fy/sizey));
+    data =weight(y(k),x(k))^(1/3).* exp(-i*2.0*pi*(shiftx*Fx/sizex+shifty*Fy/sizey));
     % Use this code when you don't have weight map data
     % data = exp(-i*2.0*pi*(shiftx*Fx/sizex+shifty*Fy/sizey));
     dum = dum+data;
